@@ -9,7 +9,6 @@ def question_to_sql( model_mode: str, settings: dict,db_path: str,table: str,
 
     userQ = question.strip()
 
-    # خليه فقط للـ API (لأنه أقوى ويتحمل سياق)
     if model_mode == "API" and history_text:
         userQ = f"Conversation so far:\n{history_text}\n\nNew question:\n{userQ}"
         
@@ -138,6 +137,7 @@ def run_sql(db_path: str, sql: str, params=()):
         cols = [d[0] for d in cur.description] 
         rows = cur.fetchall()
     return rows, cols
+
 
 
 
